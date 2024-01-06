@@ -1,0 +1,184 @@
+// Power Set Problem in GFG
+//---------------------------------
+
+
+#include<bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+class Solution{
+	public:
+		vector<string> AllPossibleStrings(string s){
+		  int  n=s.size();
+		    vector<string>v;
+		    for(int i=1;i<(1<<n);i++)
+		    {
+		        string sub="";
+		        for(int j=0;j<n;j++)
+		        {
+		            if(i&(1<<j))
+		            {
+		                sub+=s[j];
+		            }
+		        }
+		        v.push_back(sub);
+		    }
+		   sort(v.begin(),v.end());
+		  return v;
+		}
+		
+};
+
+//{ Driver Code Starts.
+int main(){
+	int tc;
+	cin >> tc;
+	while(tc--){
+		string s;
+		cin >> s;
+		Solution ob;
+		vector<string> res = ob.AllPossibleStrings(s);
+		for(auto i : res)
+			cout << i <<" ";
+		cout << "\n";
+
+	}
+	return 0;
+}
+// } Driver Code Ends
+
+
+
+//Todays POTD of GFG
+------------------------
+//{ Driver Code Starts
+
+#include<bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+
+class Solution {
+public:
+    int primefac(int n)
+    {
+        int c=0;
+        for(int i=2;i*i<=n;i++)
+        {
+            while(n%i==0)
+            {
+                n=n/i;
+                c+=1;
+            }
+        }
+        if(n>=2)
+        {
+            c+=1;
+        }
+        return c;
+    }
+	int sumOfPowers(int a, int b){
+	    // Code here
+	    int c=0;
+	    for(int i=a;i<=b;i++)
+	    {
+	       c+=primefac(i);
+	    }
+	    return c;
+	}
+};
+
+//{ Driver Code Starts.
+int main(){
+	int tc;
+	cin >> tc;
+	while(tc--){
+		int a, b;
+		cin >>  a >> b;
+		Solution obj;
+		int ans = obj.sumOfPowers(a, b);
+		cout << ans <<"\n";
+	}
+	return 0;
+}
+// } Driver Code Ends
+
+
+// Check Set bits in GF
+//------------------------
+
+//{ Driver Code Starts
+#include<bits/stdc++.h> 
+using namespace std;
+
+// } Driver Code Ends
+   
+class Solution{
+public:
+    int isBitSet(int N){
+        // code here
+        int k=log2(N)+1,c=0;
+        for(int i=0;i<k;i++)
+        {
+            if(1&(N>>i))
+            {
+                c+=1;
+            }
+            
+        }
+        if(c==k)return 1;
+        return 0;
+    }
+};
+
+//{ Driver Code Starts.
+int main() 
+{ 
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        int N;
+        cin>>N;
+        Solution ob;
+        cout << ob.isBitSet(N) << endl;
+    }
+    return 0; 
+}
+
+
+//Shortest path In OWL Coder Website
+//-----------------------------
+#include<bits/stdc++.h>
+using namespace std;
+int main()
+{
+    int a,b,c,c1=0,c2=0;
+    cin>>a>>b>>c;
+    for(int i=0;i<31;i++)
+    {
+        if(1&(b>>i))
+        {
+            c1+=1;
+        }
+        if(1&(c>>i))
+        {
+            c2+=1;
+        }
+    }
+    if(c1%2 == c2%2)
+    {
+        int k=b^c,e=0;
+         for(int i=0;i<31;i++)
+        {
+            if(1&(k>>i))
+            {
+                e+=1;
+            }
+        }
+        cout<<e/2;
+    }
+    else{
+            cout<<-1;
+    }
+}
