@@ -1,1 +1,120 @@
+//LEETCODE POTD JAN 12
+class Solution:
+    def halvesAreAlike(self, s: str) -> bool:
+        l=len(s)
+        i=l//2
+        a=s[:i]
+        b=s[i:]
+        c=0
+        co=0
+        print(a)
+        print(b)
+        for i in a:
+            if i in 'aeiouAEIOU':
+                c+=1
+        for i in b:
+            if i in 'aeiouAEIOU':
+                co+=1
+        if c==co:
+            return 1
+        else:
+            return 0
 
+//GFG POTD JAN 12
+     
+ class Solution:
+    def modifyQueue(self, q, k):
+        # code here
+        a=q[:k]
+        a=a[::-1]
+        b=q[k:]
+        c=a+b
+        return c
+
+#Initial Template for Python 3
+import atexit
+import io
+import sys
+
+#Contributed by : Nagendra Jha
+
+_INPUT_LINES = sys.stdin.read().splitlines()
+input = iter(_INPUT_LINES).__next__
+_OUTPUT_BUFFER = io.StringIO()
+sys.stdout = _OUTPUT_BUFFER
+
+@atexit.register
+
+def write():
+    sys.__stdout__.write(_OUTPUT_BUFFER.getvalue())
+
+if __name__ == '__main__':
+    test_cases = int(input())
+    for cases in range(test_cases) :
+        n,k = map(int,input().strip().split())
+        a = list(map(int,input().strip().split()))
+
+        queue = [] # our queue to be 
+
+        for i in range(n):
+            queue.append(a[i]) # enqueue elements of array in our queue
+        
+        ob = Solution()
+        print(*ob.modifyQueue(queue,k))       
+
+
+
+
+
+
+
+//GFG Count primes in Range
+
+#include <bits/stdc++.h>
+using namespace std;
+
+// } Driver Code Ends
+// User function Template for C++
+
+class Solution {
+  public:
+    int countPrimes(int L, int R) {
+        // code here
+        vector<int>v(R+1,1);
+        v[0]=0;
+        v[1]=0;
+        for(int i=2;i*i<=R;i++)
+        {
+            if(v[i])
+            {
+                for(int j=i*i;j<=R;j+=i)
+                {
+                    v[j]=0;
+                }
+            }
+        }
+        int c=0;
+        for(int i=L;i<=R;i++)
+        {
+            if(v [i])
+            {
+                c+=1;
+            }
+        }
+        return c;
+    }
+};
+
+
+//{ Driver Code Starts.
+int main() {
+    int t;
+    cin >> t;
+    while (t--) {
+        int L, R;
+        cin >> L >> R;
+        Solution ob;
+        int ans = ob.countPrimes(L, R);
+        cout << ans << "\n";
+    }
+}
